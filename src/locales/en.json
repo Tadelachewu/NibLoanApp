@@ -1,3 +1,4 @@
+
 {
   "login": {
     "welcome": "Welcome back! Please login to your account.",
@@ -131,7 +132,16 @@
       "detailsTitle": "Transfer Details",
       "description": "To complete your payment, please transfer the desired amount to the following bank account:",
       "disclaimer": "Please ensure you include the correct reference to avoid delays.",
-      "selectBankPrompt": "Please select a bank to view payment details."
+      "selectBankPrompt": "Please select a bank to view payment details.",
+      "selectOtherBank": "Select Bank",
+      "selectOtherBankPlaceholder": "Choose a bank from the list",
+      "proceed": "Proceed with Transfer",
+      "other": {
+        "accountNumberPlaceholder": "Enter Account Number",
+        "accountNamePlaceholder": "Enter Account Name",
+        "branchPlaceholder": "Enter Bank Branch",
+        "referencePlaceholder": "e.g., Your Loan ID"
+      }
     }
   },
   "support": {

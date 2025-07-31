@@ -1,3 +1,4 @@
+
 {
   "login": {
     "welcome": "እንኳን ደህና መጡ! እባክዎ ወደ መለያዎ ይግቡ።",
@@ -131,7 +132,16 @@
       "detailsTitle": "የዝውውር ዝርዝሮች",
       "description": "ክፍያዎን ለማጠናቀቅ እባክዎ የሚፈልጉትን መጠን ወደሚከተለው የባንክ ሂሳብ ያስተላልፉ፡",
       "disclaimer": "ዘግይቶ እንዳይሆን ትክክለኛውን ማጣቀሻ ማካተትዎን ያረጋግጡ።",
-      "selectBankPrompt": "የክፍያ ዝርዝሮችን ለማየት እባክዎ ባንክ ይምረጡ።"
+      "selectBankPrompt": "የክፍያ ዝርዝሮችን ለማየት እባክዎ ባንክ ይምረጡ።",
+      "selectOtherBank": "ባንክ ይምረጡ",
+      "selectOtherBankPlaceholder": "ከዝርዝሩ ውስጥ ባንክ ይምረጡ",
+      "proceed": "ዝውውሩን ይቀጥሉ",
+      "other": {
+        "accountNumberPlaceholder": "የሂሳብ ቁጥር ያስገቡ",
+        "accountNamePlaceholder": "የሂሳብ ስም ያስገቡ",
+        "branchPlaceholder": "የባንክ ቅርንጫፍ ያስገቡ",
+        "referencePlaceholder": "ለምሳሌ, የእርስዎ የብድር መታወቂያ"
+      }
     }
   },
   "support": {
