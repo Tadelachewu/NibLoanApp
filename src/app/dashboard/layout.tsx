@@ -65,10 +65,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
       return (
           <SidebarMenuItem>
-              <Link href={href} legacyBehavior passHref>
-                  <SidebarMenuButton isActive={isActive} tooltip={{ children }}>
+              <Link href={href} passHref>
+                  <SidebarMenuButton asChild isActive={isActive} tooltip={{ children }}>
+                    <a>
                       <Icon />
                       <span>{children}</span>
+                    </a>
                   </SidebarMenuButton>
               </Link>
           </SidebarMenuItem>
