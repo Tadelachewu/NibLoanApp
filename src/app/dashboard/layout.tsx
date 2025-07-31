@@ -21,31 +21,34 @@ import {
   SidebarMenuButton,
   SidebarInset,
 } from "@/components/ui/sidebar";
-
-const navItems = [
-    { href: "/dashboard", icon: Home, label: "Dashboard" },
-    { href: "/dashboard/apply", icon: FileText, label: "Apply for Loan" },
-    { href: "/dashboard/repayment", icon: CreditCard, label: "Repayments" },
-    { href: "/dashboard/support", icon: LifeBuoy, label: "Support" },
-];
-
-function NavItem({ href, icon: Icon, children }: { href: string; icon: React.ElementType; children: React.ReactNode }) {
-    const pathname = usePathname();
-    const isActive = pathname === href;
-
-    return (
-        <SidebarMenuItem>
-            <Link href={href} legacyBehavior passHref>
-                <SidebarMenuButton isActive={isActive} tooltip={{ children }}>
-                    <Icon />
-                    <span>{children}</span>
-                </SidebarMenuButton>
-            </Link>
-        </SidebarMenuItem>
-    );
-}
+import { useTranslation } from "@/hooks/use-translation";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode; }) {
+  const { t } = useTranslation();
+
+  const navItems = [
+    { href: "/dashboard", icon: Home, label: t('dashboard.nav.dashboard') },
+    { href: "/dashboard/apply", icon: FileText, label: t('dashboard.nav.apply') },
+    { href: "/dashboard/repayment", icon: CreditCard, label: t('dashboard.nav.repayments') },
+    { href: "/dashboard/support", icon: LifeBuoy, label: t('dashboard.nav.support') },
+  ];
+
+  function NavItem({ href, icon: Icon, children }: { href: string; icon: React.ElementType; children: React.ReactNode }) {
+      const pathname = usePathname();
+      const isActive = pathname === href;
+
+      return (
+          <SidebarMenuItem>
+              <Link href={href} legacyBehavior passHref>
+                  <SidebarMenuButton isActive={isActive} tooltip={{ children }}>
+                      <Icon />
+                      <span>{children}</span>
+                  </SidebarMenuButton>
+              </Link>
+          </SidebarMenuItem>
+      );
+  }
+
   return (
     <SidebarProvider>
         <Sidebar side="left" collapsible="icon">

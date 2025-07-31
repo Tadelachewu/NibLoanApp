@@ -1,0 +1,171 @@
+{
+  "login": {
+    "welcome": "Welcome back! Please login to your account.",
+    "email": "Email Address",
+    "pin": "PIN",
+    "loginButton": "Login",
+    "biometricsButton": "Login with Biometrics"
+  },
+  "header": {
+    "notifications": {
+      "toggle": "Toggle notifications",
+      "title": "Notifications",
+      "loanApproved": {
+        "title": "Loan Approved!",
+        "description": "Your personal loan of $10,000 has been approved."
+      },
+      "paymentReminder": {
+        "title": "Payment Reminder",
+        "description": "Your next payment of $250 is due in 3 days."
+      }
+    },
+    "language": {
+      "toggle": "Change language",
+      "select": "Select Language",
+      "english": "English",
+      "amharic": "Amharic"
+    },
+    "userMenu": {
+      "toggle": "Toggle user menu",
+      "myAccount": "My Account",
+      "profile": "Profile",
+      "settings": "Settings",
+      "logout": "Logout"
+    }
+  },
+  "dashboard": {
+    "nav": {
+      "dashboard": "Dashboard",
+      "apply": "Apply for Loan",
+      "repayments": "Repayments",
+      "support": "Support"
+    },
+    "totalOutstanding": "Total Outstanding",
+    "acrossLoans": "Across {count} active loans",
+    "nextPaymentDue": "Next Payment Due",
+    "onDate": "on {date}",
+    "interestRate": "Interest Rate",
+    "avgInterestRate": "Average across all loans",
+    "creditScore": "Credit Score",
+    "creditStanding": "Excellent standing",
+    "activeLoans": "Active Loans",
+    "activeLoansDesc": "An overview of your current loans.",
+    "loanId": "Loan ID",
+    "type": "Type",
+    "amount": "Amount",
+    "nextPayment": "Next Payment",
+    "status": "Status",
+    "repaymentProgress": "Repayment Progress",
+    "repaymentProgressDesc": "Your payment history for the last 6 months.",
+    "chart": {
+        "paid": "Paid",
+        "due": "Due"
+    }
+  },
+  "apply": {
+    "title": "New Loan Application",
+    "description": "Please fill out the form below to apply for a new loan.",
+    "personalInfo": {
+      "title": "1. Personal Information",
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "John Doe",
+      "email": "Email Address",
+      "emailPlaceholder": "you@example.com",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+1 (555) 123-4567",
+      "address": "Address",
+      "addressPlaceholder": "123 Main St, Anytown, USA"
+    },
+    "loanDetails": {
+      "title": "2. Loan Details",
+      "loanType": "Loan Type",
+      "selectLoanType": "Select a loan type",
+      "loanAmount": "Loan Amount ($)",
+      "loanAmountPlaceholder": "e.g., 10000",
+      "purpose": "Purpose of Loan",
+      "purposePlaceholder": "Briefly describe the purpose of your loan..."
+    },
+    "repayment": {
+      "title": "3. Repayment Details",
+      "duration": "Repayment Duration",
+      "7days": "7 days",
+      "14days": "14 days",
+      "30days": "30 days",
+      "90days": "90 days (3 months)",
+      "180days": "180 days (6 months)",
+      "1year": "1 year",
+      "custom": "Custom duration (days)",
+      "customDuration": "Custom Duration (in days)",
+      "customDurationPlaceholder": "e.g., 45"
+    },
+    "summary": {
+      "title": "Loan Summary",
+      "dueDate": "Due Date",
+      "estInterest": "Est. Interest",
+      "totalRepayment": "Total Repayment",
+      "disclaimer": "*Estimates are based on a {rate}% annual interest rate. Actual terms may vary."
+    },
+    "documents": {
+      "title": "4. Document Submission",
+      "description": "Please upload required documents like ID, payslips, bank statements.",
+      "idProof": "Identification (ID, Passport)",
+      "incomeProof": "Proof of Income (Payslips)"
+    },
+    "submit": "Submit Application"
+  },
+  "repayment": {
+    "title": "Make a Repayment",
+    "description": "Choose your preferred payment method to repay your loan.",
+    "debitCard": "Debit Card",
+    "bankTransfer": "Bank Transfer",
+    "card": {
+      "amount": "Amount to Pay ($)",
+      "amountPlaceholder": "Enter amount",
+      "cardNumber": "Card Number",
+      "expiryDate": "Expiry Date",
+      "cvv": "CVV",
+      "payNow": "Pay Now"
+    },
+    "transfer": {
+      "selectBank": "Select a Bank",
+      "detailsTitle": "Transfer Details",
+      "description": "To complete your payment, please transfer the desired amount to the following bank account:",
+      "disclaimer": "Please ensure you include the correct reference to avoid delays.",
+      "selectBankPrompt": "Please select a bank to view payment details."
+    }
+  },
+  "support": {
+    "contact": {
+      "title": "Contact Information",
+      "description": "If you need to speak with a human representative.",
+      "phone": "Phone Support",
+      "email": "Email Support"
+    }
+  },
+  "chatbot": {
+      "title": "AI Chat Support",
+      "description": "Get instant answers to your questions.",
+      "greeting": "Hello! I'm the X Bank AI assistant. How can I help you today with your loan questions?",
+      "simulatedResponse": "Thank you for your question. Based on our records, the interest rate for a standard personal loan is currently 5.75% APR. Would you like to know more about our loan products?",
+      "inputPlaceholder": "Ask about loan terms, rates, etc.",
+      "sendAriaLabel": "Send message"
+  },
+  "loanTypes": {
+    "personalloan": "Personal Loan",
+    "autoloan": "Auto Loan",
+    "businessloan": "Business Loan",
+    "mortgage": "Mortgage"
+  },
+  "loanStatus": {
+      "active": "Active",
+      "processing": "Processing"
+  },
+  "months": {
+      "january": "January",
+      "february": "February",
+      "march": "March",
+      "april": "April",
+      "may": "May",
+      "june": "June"
+  }
+}

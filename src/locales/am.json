@@ -1,0 +1,171 @@
+{
+  "login": {
+    "welcome": "እንኳን ደህና መጡ! እባክዎ ወደ መለያዎ ይግቡ።",
+    "email": "የኢሜይል አድራሻ",
+    "pin": "ፒን",
+    "loginButton": "ግባ",
+    "biometricsButton": "በባዮሜትሪክስ ይግቡ"
+  },
+  "header": {
+    "notifications": {
+      "toggle": "ማሳወቂያዎችን ቀይር",
+      "title": "ማሳወቂያዎች",
+      "loanApproved": {
+        "title": "ብድር ጸድቋል!",
+        "description": "የእርስዎ የ$10,000 የግል ብድር ጸድቋል።"
+      },
+      "paymentReminder": {
+        "title": "የክፍያ ማስታወሻ",
+        "description": "የሚቀጥለው የ$250 ክፍያዎ በ3 ቀናት ውስጥ ነው።"
+      }
+    },
+    "language": {
+      "toggle": "ቋንቋ ቀይር",
+      "select": "ቋንቋ ይምረጡ",
+      "english": "እንግሊዝኛ",
+      "amharic": "አማርኛ"
+    },
+    "userMenu": {
+      "toggle": "የተጠቃሚ ምናሌን ቀይር",
+      "myAccount": "የእኔ መለያ",
+      "profile": "መገለጫ",
+      "settings": "ቅንብሮች",
+      "logout": "ውጣ"
+    }
+  },
+  "dashboard": {
+    "nav": {
+      "dashboard": "ዳሽቦርድ",
+      "apply": "ለብድር ያመልክቱ",
+      "repayments": "ክፍያዎች",
+      "support": "ድጋፍ"
+    },
+    "totalOutstanding": "ጠቅላላ ያልተከፈለ",
+    "acrossLoans": "በ{count} ገቢር ብድሮች ላይ",
+    "nextPaymentDue": "ቀጣይ የክፍያ ቀን",
+    "onDate": "በ{date}",
+    "interestRate": "የወለድ ምጣኔ",
+    "avgInterestRate": "በሁሉም ብድሮች ላይ አማካይ",
+    "creditScore": "የብድር ነጥብ",
+    "creditStanding": "በጣም ጥሩ ደረጃ",
+    "activeLoans": "ገቢር ብድሮች",
+    "activeLoansDesc": "የአሁኑ ብድሮችዎ አጠቃላይ እይታ።",
+    "loanId": "የብድር መታወቂያ",
+    "type": "ዓይነት",
+    "amount": "መጠን",
+    "nextPayment": "ቀጣይ ክፍያ",
+    "status": "ሁኔታ",
+    "repaymentProgress": "የክፍያ ሂደት",
+    "repaymentProgressDesc": "ያለፉት 6 ወራት የክፍያ ታሪክዎ።",
+    "chart": {
+        "paid": "ተከፍሏል",
+        "due": "ያልተከፈለ"
+    }
+  },
+  "apply": {
+    "title": "አዲስ የብድር ማመልከቻ",
+    "description": "ለአዲስ ብድር ለማመልከት እባክዎ ከታች ያለውን ቅጽ ይሙሉ።",
+    "personalInfo": {
+      "title": "1. የግል መረጃ",
+      "fullName": "ሙሉ ስም",
+      "fullNamePlaceholder": "ጆን ዶ",
+      "email": "የኢሜይል አድራሻ",
+      "emailPlaceholder": "you@example.com",
+      "phone": "ስልክ ቁጥር",
+      "phonePlaceholder": "+1 (555) 123-4567",
+      "address": "አድራሻ",
+      "addressPlaceholder": "123 ዋና መንገድ, አዲስ አበባ"
+    },
+    "loanDetails": {
+      "title": "2. የብድር ዝርዝሮች",
+      "loanType": "የብድር ዓይነት",
+      "selectLoanType": "የብድር ዓይነት ይምረጡ",
+      "loanAmount": "የብድር መጠን ($)",
+      "loanAmountPlaceholder": "ለምሳሌ, 10000",
+      "purpose": "የብድር ዓላማ",
+      "purposePlaceholder": "የብድርዎን ዓላማ በአጭሩ ይግለጹ..."
+    },
+    "repayment": {
+      "title": "3. የመክፈያ ዝርዝሮች",
+      "duration": "የመክፈያ ጊዜ",
+      "7days": "7 ቀናት",
+      "14days": "14 ቀናት",
+      "30days": "30 ቀናት",
+      "90days": "90 ቀናት (3 ወራት)",
+      "180days": "180 ቀናት (6 ወራት)",
+      "1year": "1 ዓመት",
+      "custom": "ብጁ ጊዜ (በቀናት)",
+      "customDuration": "ብጁ ጊዜ (በቀናት)",
+      "customDurationPlaceholder": "ለምሳሌ, 45"
+    },
+    "summary": {
+      "title": "የብድር ማጠቃለያ",
+      "dueDate": "የመክፈያ ቀን",
+      "estInterest": "የተገመተ ወለድ",
+      "totalRepayment": "ጠቅላላ ክፍያ",
+      "disclaimer": "*ግምቶች በ{rate}% ዓመታዊ የወለድ ምጣኔ ላይ የተመሰረቱ ናቸው። ትክክለኛዎቹ ውሎች ሊለያዩ ይችላሉ።"
+    },
+    "documents": {
+      "title": "4. የሰነድ ማስረከቢያ",
+      "description": "እባክዎ እንደ መታወቂያ, የደመወዝ ወረቀት, የባንክ መግለጫ ያሉ አስፈላጊ ሰነዶችን ይስቀሉ።",
+      "idProof": "መታወቂያ (ID, ፓስፖርት)",
+      "incomeProof": "የገቢ ማረጋገጫ (የደመወዝ ወረቀት)"
+    },
+    "submit": "ማመልከቻ አስገባ"
+  },
+  "repayment": {
+    "title": "ክፍያ ፈጽም",
+    "description": "ብድርዎን ለመክፈል የሚመርጡትን የመክፈያ ዘዴ ይምረጡ።",
+    "debitCard": "ዴቢት ካርድ",
+    "bankTransfer": "የባንክ ዝውውር",
+    "card": {
+      "amount": "የሚከፈል መጠን ($)",
+      "amountPlaceholder": "መጠን ያስገቡ",
+      "cardNumber": "የካርድ ቁጥር",
+      "expiryDate": "የሚያበቃበት ቀን",
+      "cvv": "ሲቪቪ",
+      "payNow": "አሁን ይክፈሉ"
+    },
+    "transfer": {
+      "selectBank": "ባንክ ይምረጡ",
+      "detailsTitle": "የዝውውር ዝርዝሮች",
+      "description": "ክፍያዎን ለማጠናቀቅ እባክዎ የሚፈልጉትን መጠን ወደሚከተለው የባንክ ሂሳብ ያስተላልፉ፡",
+      "disclaimer": "ዘግይቶ እንዳይሆን ትክክለኛውን ማጣቀሻ ማካተትዎን ያረጋግጡ።",
+      "selectBankPrompt": "የክፍያ ዝርዝሮችን ለማየት እባክዎ ባንክ ይምረጡ።"
+    }
+  },
+  "support": {
+    "contact": {
+      "title": "የእውቂያ መረጃ",
+      "description": "ከሰው ተወካይ ጋር መነጋገር ከፈለጉ።",
+      "phone": "የስልክ ድጋፍ",
+      "email": "የኢሜይል ድጋፍ"
+    }
+  },
+  "chatbot": {
+      "title": "AI የውይይት ድጋፍ",
+      "description": "ለጥያቄዎችዎ ፈጣን መልስ ያግኙ።",
+      "greeting": "ሰላም! እኔ የኤክስ ባንክ AI ረዳት ነኝ። ዛሬ በብድር ጥያቄዎችዎ ላይ እንዴት ልረዳዎት እችላለሁ?",
+      "simulatedResponse": "ስለ ጥያቄዎ እናመሰግናለን። በእኛ መዝገቦች መሰረት፣ ለመደበኛ የግል ብድር የወለድ ምጣኔ በአሁኑ ጊዜ 5.75% APR ነው። ስለ ብድር ምርቶቻችን የበለጠ ማወቅ ይፈልጋሉ?",
+      "inputPlaceholder": "ስለ ብድር ውሎች፣ ምጣኔዎች፣ ወዘተ ይጠይቁ።",
+      "sendAriaLabel": "መልእክት ላክ"
+  },
+  "loanTypes": {
+    "personalloan": "የግል ብድር",
+    "autoloan": "የመኪና ብድር",
+    "businessloan": "የንግድ ብድር",
+    "mortgage": "የቤት ብድር"
+  },
+  "loanStatus": {
+      "active": "ገቢር",
+      "processing": "በሂደት ላይ"
+  },
+  "months": {
+      "january": "ጥር",
+      "february": "የካቲት",
+      "march": "መጋቢት",
+      "april": "ሚያዝያ",
+      "may": "ግንቦት",
+      "june": "ሰኔ"
+  }
+}

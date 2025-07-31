@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "@/hooks/use-translation";
 
 interface Message {
   id: number;
@@ -15,12 +16,17 @@ interface Message {
 }
 
 export function Chatbot() {
-  const [messages, setMessages] = useState<Message[]>([
-    { id: 1, text: "Hello! I'm the X Bank AI assistant. How can I help you today with your loan questions?", isUser: false },
-  ]);
+  const { t } = useTranslation();
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setMessages([
+        { id: 1, text: t('chatbot.greeting'), isUser: false },
+    ])
+  }, [t]);
 
   useEffect(() => {
     if(scrollAreaRef.current) {
@@ -37,7 +43,7 @@ export function Chatbot() {
 
     // Simulate AI response
     setTimeout(() => {
-        const aiResponse: Message = { id: Date.now() + 1, text: "Thank you for your question. Based on our records, the interest rate for a standard personal loan is currently 5.75% APR. Would you like to know more about our loan products?", isUser: false };
+        const aiResponse: Message = { id: Date.now() + 1, text: t('chatbot.simulatedResponse'), isUser: false };
         setMessages((prev) => [...prev, aiResponse]);
         setIsLoading(false);
     }, 1000);
@@ -49,9 +55,9 @@ export function Chatbot() {
     <div className="flex flex-col h-full bg-card rounded-lg border">
         <div className="p-4 border-b">
             <h3 className="font-semibold text-lg flex items-center gap-2">
-                <Bot className="text-primary"/> AI Chat Support
+                <Bot className="text-primary"/> {t('chatbot.title')}
             </h3>
-            <p className="text-sm text-muted-foreground">Get instant answers to your questions.</p>
+            <p className="text-sm text-muted-foreground">{t('chatbot.description')}</p>
         </div>
         <ScrollArea className="flex-1 p-4" ref={scrollAreaRef}>
           <div className="space-y-6 pr-4">
@@ -103,10 +109,10 @@ export function Chatbot() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSend()}
-                placeholder="Ask about loan terms, rates, etc."
+                placeholder={t('chatbot.inputPlaceholder')}
                 disabled={isLoading}
             />
-            <Button onClick={handleSend} size="icon" aria-label="Send message" disabled={isLoading}>
+            <Button onClick={handleSend} size="icon" aria-label={t('chatbot.sendAriaLabel')} disabled={isLoading}>
                 <Send className="h-4 w-4" />
             </Button>
             </div>

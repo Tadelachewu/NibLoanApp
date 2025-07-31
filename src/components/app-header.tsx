@@ -6,6 +6,8 @@ import {
   LogOut,
   Settings,
   User,
+  Languages,
+  Check
 } from "lucide-react";
 
 import {
@@ -21,6 +23,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
 } from "@/components/ui/dropdown-menu";
 import {
   Popover,
@@ -28,8 +32,11 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { SidebarTrigger } from "@/components/ui/sidebar";
+import { useTranslation } from "@/hooks/use-translation";
 
 export function AppHeader() {
+    const { t, setLocale, locale } = useTranslation();
+
   return (
     <header className="flex h-14 items-center gap-4 border-b bg-card px-4 lg:h-[60px] lg:px-6 sticky top-0 z-30">
       <SidebarTrigger className="md:hidden" />
@@ -39,12 +46,12 @@ export function AppHeader() {
         <PopoverTrigger asChild>
           <Button variant="ghost" size="icon" className="rounded-full">
             <Bell className="h-5 w-5" />
-            <span className="sr-only">Toggle notifications</span>
+            <span className="sr-only">{t('header.notifications.toggle')}</span>
           </Button>
         </PopoverTrigger>
         <PopoverContent align="end" className="w-80">
           <div className="p-2">
-            <h4 className="font-medium text-sm px-2 py-1.5">Notifications</h4>
+            <h4 className="font-medium text-sm px-2 py-1.5">{t('header.notifications.title')}</h4>
             <div className="mt-2 space-y-2">
               <a href="#" className="flex items-start rounded-md p-2 hover:bg-muted">
                 <div className="mt-1 flex h-2.5 w-2.5 translate-x-1 translate-y-1.5 transform">
@@ -52,20 +59,37 @@ export function AppHeader() {
                   <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-primary"></span>
                 </div>
                 <div className="ml-3 flex-1">
-                  <p className="text-sm font-medium">Loan Approved!</p>
-                  <p className="text-xs text-muted-foreground">Your personal loan of $10,000 has been approved.</p>
+                  <p className="text-sm font-medium">{t('header.notifications.loanApproved.title')}</p>
+                  <p className="text-xs text-muted-foreground">{t('header.notifications.loanApproved.description')}</p>
                 </div>
               </a>
               <a href="#" className="flex items-start rounded-md p-2 hover:bg-muted">
                 <div className="ml-3 flex-1">
-                  <p className="text-sm font-medium">Payment Reminder</p>
-                  <p className="text-xs text-muted-foreground">Your next payment of $250 is due in 3 days.</p>
+                  <p className="text-sm font-medium">{t('header.notifications.paymentReminder.title')}</p>
+                  <p className="text-xs text-muted-foreground">{t('header.notifications.paymentReminder.description')}</p>
                 </div>
               </a>
             </div>
           </div>
         </PopoverContent>
       </Popover>
+
+       <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+           <Button variant="ghost" size="icon" className="rounded-full">
+            <Languages className="h-5 w-5" />
+            <span className="sr-only">{t('header.language.toggle')}</span>
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">
+          <DropdownMenuLabel>{t('header.language.select')}</DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          <DropdownMenuRadioGroup value={locale} onValueChange={setLocale}>
+            <DropdownMenuRadioItem value="en">{t('header.language.english')}</DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="am">{t('header.language.amharic')}</DropdownMenuRadioItem>
+          </DropdownMenuRadioGroup>
+        </DropdownMenuContent>
+      </DropdownMenu>
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
@@ -74,17 +98,17 @@ export function AppHeader() {
               <AvatarImage src="https://placehold.co/100x100" alt="User Avatar" data-ai-hint="person face" />
               <AvatarFallback>U</AvatarFallback>
             </Avatar>
-            <span className="sr-only">Toggle user menu</span>
+            <span className="sr-only">{t('header.userMenu.toggle')}</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
+          <DropdownMenuLabel>{t('header.userMenu.myAccount')}</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem><User className="mr-2 h-4 w-4" /> Profile</DropdownMenuItem>
-          <DropdownMenuItem><Settings className="mr-2 h-4 w-4" /> Settings</DropdownMenuItem>
+          <DropdownMenuItem><User className="mr-2 h-4 w-4" /> {t('header.userMenu.profile')}</DropdownMenuItem>
+          <DropdownMenuItem><Settings className="mr-2 h-4 w-4" /> {t('header.userMenu.settings')}</DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem asChild>
-            <Link href="/login" className="flex items-center w-full"><LogOut className="mr-2 h-4 w-4" /> Logout</Link>
+            <Link href="/login" className="flex items-center w-full"><LogOut className="mr-2 h-4 w-4" /> {t('header.userMenu.logout')}</Link>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
