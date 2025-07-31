@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, FormEvent } from "react";
 import { Bot, Send, User, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,15 +8,19 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "@/hooks/use-translation";
+import { chat } from "@/ai/flows/chat";
+import { useToast } from "@/hooks/use-toast";
+
 
 interface Message {
-  id: number;
+  id: string;
   text: string;
   isUser: boolean;
 }
 
 export function Chatbot() {
   const { t } = useTranslation();
+  const { toast } = useToast();
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -24,7 +28,7 @@ export function Chatbot() {
 
   useEffect(() => {
     setMessages([
-        { id: 1, text: t('chatbot.greeting'), isUser: false },
+        { id: 'initial-greeting', text: t('chatbot.greeting'), isUser: false },
     ])
   }, [t]);
 
@@ -34,22 +38,42 @@ export function Chatbot() {
     }
   }, [messages])
 
-  const handleSend = () => {
+  const handleSend = async (e: FormEvent) => {
+    e.preventDefault();
     if (input.trim() === "") return;
+    
+    const userMessage: Message = { id: crypto.randomUUID(), text: input, isUser: true };
+    setMessages((prev) => [...prev, userMessage]);
+    setInput("");
     setIsLoading(true);
 
-    const userMessage: Message = { id: Date.now(), text: input, isUser: true };
-    setMessages((prev) => [...prev, userMessage]);
-
-    // Simulate AI response
-    setTimeout(() => {
-        const aiResponse: Message = { id: Date.now() + 1, text: t('chatbot.simulatedResponse'), isUser: false };
+    try {
+        const aiResponseText = await chat(input);
+        const aiResponse: Message = { id: crypto.randomUUID(), text: aiResponseText, isUser: false };
         setMessages((prev) => [...prev, aiResponse]);
+    } catch (error) {
+        console.error("Error fetching AI response:", error);
+        toast({
+            variant: "destructive",
+            title: "Error",
+            description: "Failed to get a response from the AI assistant. Please try again.",
+        });
+        // Remove the user message if the API call fails
+        setMessages((prev) => prev.filter(msg => msg.id !== userMessage.id));
+    } finally {
         setIsLoading(false);
-    }, 1000);
-
-    setInput("");
+    }
   };
+
+  const commonQuestions = [
+    t('chatbot.question1'),
+    t('chatbot.question2'),
+    t('chatbot.question3')
+  ]
+
+  const handleQuestionClick = (question: string) => {
+    setInput(question);
+  }
 
   return (
     <div className="flex flex-col h-full bg-card rounded-lg border">
@@ -76,7 +100,7 @@ export function Chatbot() {
                 )}
                 <div
                   className={cn(
-                    "max-w-md rounded-lg p-3 text-sm shadow-md",
+                    "max-w-md rounded-lg p-3 text-sm shadow-md whitespace-pre-wrap",
                     message.isUser
                       ? "bg-primary text-primary-foreground"
                       : "bg-muted"
@@ -103,19 +127,25 @@ export function Chatbot() {
              )}
           </div>
         </ScrollArea>
-        <div className="border-t p-4">
-            <div className="flex items-center gap-2">
+        <div className="border-t p-4 space-y-3">
+             <div className="flex flex-wrap gap-2">
+                {commonQuestions.map((q, i) => (
+                    <Button key={i} variant="outline" size="sm" onClick={() => handleQuestionClick(q)} className="text-xs h-auto py-1.5">
+                        {q}
+                    </Button>
+                ))}
+            </div>
+            <form onSubmit={handleSend} className="flex items-center gap-2">
             <Input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && handleSend()}
                 placeholder={t('chatbot.inputPlaceholder')}
                 disabled={isLoading}
             />
-            <Button onClick={handleSend} size="icon" aria-label={t('chatbot.sendAriaLabel')} disabled={isLoading}>
+            <Button type="submit" size="icon" aria-label={t('chatbot.sendAriaLabel')} disabled={isLoading || input.trim() === ""}>
                 <Send className="h-4 w-4" />
             </Button>
-            </div>
+            </form>
         </div>
     </div>
   );

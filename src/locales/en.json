@@ -158,7 +158,10 @@
       "greeting": "Hello! I'm the X Bank AI assistant. How can I help you today with your loan questions?",
       "simulatedResponse": "Thank you for your question. Based on our records, the interest rate for a standard personal loan is currently 5.75% APR. Would you like to know more about our loan products?",
       "inputPlaceholder": "Ask about loan terms, rates, etc.",
-      "sendAriaLabel": "Send message"
+      "sendAriaLabel": "Send message",
+      "question1": "How do I apply for a loan?",
+      "question2": "What are the loan types?",
+      "question3": "What is the interest rate?"
   },
   "loanTypes": {
     "personalloan": "Personal Loan",
