@@ -30,7 +30,7 @@ import { useTranslation } from "@/hooks/use-translation";
 export default function DashboardLayout({ children }: { children: React.ReactNode; }) {
   const { t } = useTranslation();
   // In a real app, you would get this from your auth context
-  const userRole = "admin"; 
+  const userRole = "customer"; 
 
   const navItems = [
     { href: "/dashboard", icon: Home, label: t('dashboard.nav.dashboard'), roles: ['customer', 'loan-officer', 'admin'] },
