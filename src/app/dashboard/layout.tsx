@@ -50,13 +50,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     { href: "/dashboard", icon: Home, label: t('dashboard.nav.dashboard'), roles: ['customer', 'loan-officer', 'admin'] },
     { href: "/dashboard/apply", icon: FileText, label: t('dashboard.nav.apply'), roles: ['customer'] },
     { href: "/dashboard/repayment", icon: CreditCard, label: t('dashboard.nav.repayments'), roles: ['customer'] },
-    { href: "/dashboard/loans", icon: Landmark, label: 'Loan Management', roles: ['loan-officer'] },
+    { href: "/dashboard/loans", icon: Landmark, label: t('dashboard.nav.loanManagement'), roles: ['loan-officer'] },
     { href: "/dashboard/support", icon: LifeBuoy, label: t('dashboard.nav.support'), roles: ['customer', 'loan-officer', 'admin'] },
   ];
   
   const adminNavItems = [
     { href: "/dashboard/admin/users", icon: Users, label: t('dashboard.nav.userManagement'), roles: ['admin'] },
-    { href: "/dashboard/admin/settings", icon: Shield, label: 'System Settings', roles: ['admin'] },
+    { href: "/dashboard/admin/settings", icon: Shield, label: t('dashboard.nav.systemSettings'), roles: ['admin'] },
   ];
 
   function NavItem({ href, icon: Icon, children }: { href: string; icon: React.ElementType; children: React.ReactNode }) {

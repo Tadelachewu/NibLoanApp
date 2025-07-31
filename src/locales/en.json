@@ -41,6 +41,8 @@
       "repayments": "Repayments",
       "support": "Support",
       "userManagement": "User Management",
+      "loanManagement": "Loan Management",
+      "systemSettings": "System Settings",
       "admin": {
         "title": "Admin"
       }
@@ -216,6 +218,60 @@
       "deleteConfirmTitle": "Are you sure?",
       "deleteConfirmText": "This action cannot be undone. This will permanently delete the user account.",
       "deleteConfirmButton": "Yes, delete user"
+    }
+  },
+  "loanManagement": {
+    "title": "Loan Application Management",
+    "description": "Review, approve, or reject loan applications submitted by customers.",
+    "searchPlaceholder": "Search by customer name...",
+    "filter": {
+      "placeholder": "Filter by status",
+      "all": "All Statuses",
+      "processing": "Processing",
+      "approved": "Approved",
+      "rejected": "Rejected"
+    },
+    "table": {
+      "id": "Application ID",
+      "customer": "Customer Name",
+      "type": "Loan Type",
+      "amount": "Amount",
+      "date": "Date Submitted",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "status": {
+      "processing": "Processing",
+      "approved": "Approved",
+      "rejected": "Rejected"
+    },
+    "actions": {
+      "approve": "Approve",
+      "reject": "Reject"
+    }
+  },
+  "systemSettings": {
+    "title": "System Settings",
+    "description": "Manage global settings for the entire application.",
+    "saveChanges": "Save Changes",
+    "loanTerms": {
+      "title": "Loan Terms",
+      "description": "Define the rules for loan applications.",
+      "minAmount": "Minimum Loan Amount ($)",
+      "maxAmount": "Maximum Loan Amount ($)",
+      "repaymentOptions": "Enabled Repayment Durations",
+      "days": "days",
+      "allowCustom": "Allow custom durations"
+    },
+    "interestRates": {
+      "title": "Interest Rates",
+      "description": "Set the base interest rates for new loans.",
+      "annualRate": "Base Annual Rate (%)"
+    },
+    "aiSettings": {
+      "title": "AI Assistant Settings",
+      "description": "Configure the behavior of the support chatbot.",
+      "enableLearning": "Enable continuous learning from chats"
     }
   }
 }

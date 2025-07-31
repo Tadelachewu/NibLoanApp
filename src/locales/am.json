@@ -41,6 +41,8 @@
       "repayments": "ክፍያዎች",
       "support": "ድጋፍ",
       "userManagement": "የተጠቃሚ አስተዳደር",
+      "loanManagement": "የብድር አስተዳደር",
+      "systemSettings": "የስርዓት ቅንብሮች",
       "admin": {
         "title": "አስተዳዳሪ"
       }
@@ -216,6 +218,60 @@
       "deleteConfirmTitle": "እርግጠኛ ነዎት?",
       "deleteConfirmText": "ይህ ድርጊት ሊቀለበስ አይችልም። ይህ የተጠቃሚውን መለያ በቋሚነት ይሰርዛል።",
       "deleteConfirmButton": "አዎ፣ ተጠቃሚን ሰርዝ"
+    }
+  },
+   "loanManagement": {
+    "title": "የብድር ማመልከቻ አስተዳደር",
+    "description": "በደንበኞች የቀረቡትን የብድር ማመልከቻዎች ይገምግሙ፣ ያጽድቁ ወይም ውድቅ ያድርጉ።",
+    "searchPlaceholder": "በደንበኛ ስም ይፈልጉ...",
+    "filter": {
+      "placeholder": "በሁኔታ ማጣሪያ",
+      "all": "ሁሉም ሁኔታዎች",
+      "processing": "በሂደት ላይ",
+      "approved": "ጸድቋል",
+      "rejected": "ውድቅ ተደርጓል"
+    },
+    "table": {
+      "id": "የማመልከቻ መታወቂያ",
+      "customer": "የደንበኛ ስም",
+      "type": "የብድር ዓይነት",
+      "amount": "መጠን",
+      "date": "የቀረበበት ቀን",
+      "status": "ሁኔታ",
+      "actions": "ድርጊቶች"
+    },
+    "status": {
+      "processing": "በሂደት ላይ",
+      "approved": "ጸድቋል",
+      "rejected": "ውድቅ ተደርጓል"
+    },
+    "actions": {
+      "approve": "አጽድቅ",
+      "reject": "ውድቅ አድርግ"
+    }
+  },
+  "systemSettings": {
+    "title": "የስርዓት ቅንብሮች",
+    "description": "ለመላው መተግበሪያ ዓለም አቀፍ ቅንብሮችን ያስተዳድሩ።",
+    "saveChanges": "ለውጦችን አስቀምጥ",
+    "loanTerms": {
+      "title": "የብድር ውሎች",
+      "description": "ለብድር ማመልከቻዎች ደንቦችን ይግለጹ።",
+      "minAmount": "ዝቅተኛ የብድር መጠን ($)",
+      "maxAmount": "ከፍተኛ የብድር መጠን ($)",
+      "repaymentOptions": "የነቁ የመክፈያ ጊዜዎች",
+      "days": "ቀናት",
+      "allowCustom": "ብጁ ጊዜዎችን ፍቀድ"
+    },
+    "interestRates": {
+      "title": "የወለድ ምጣኔዎች",
+      "description": "ለአዲስ ብድሮች መሠረታዊ የወለድ ምጣኔዎችን ያዘጋጁ።",
+      "annualRate": "መሠረታዊ ዓመታዊ ምጣኔ (%)"
+    },
+    "aiSettings": {
+      "title": "የ AI ረዳት ቅንብሮች",
+      "description": "የድጋፍ ቻትቦት ባህሪን ያዋቅሩ።",
+      "enableLearning": "ከውይይቶች ቀጣይነት ያለው መማርን አንቃ"
     }
   }
 }
