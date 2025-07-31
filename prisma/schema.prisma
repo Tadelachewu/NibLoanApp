@@ -1,0 +1,72 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  password  String
+  role      UserRole @default(CUSTOMER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  loans     Loan[]
+}
+
+model Loan {
+  id                String     @id @default(cuid())
+  amount            Float
+  interestRate      Float
+  duration          Int // in days
+  purpose           String
+  status            LoanStatus @default(PROCESSING)
+  userId            String
+  user              User       @relation(fields: [userId], references: [id])
+  createdAt         DateTime   @default(now())
+  updatedAt         DateTime   @updatedAt
+  repayments        Repayment[]
+  applicationDate   DateTime   @default(now())
+  approvalDate      DateTime?
+  rejectionDate     DateTime?
+  dueDate           DateTime
+}
+
+model Repayment {
+  id          String   @id @default(cuid())
+  amount      Float
+  paymentDate DateTime @default(now())
+  loanId      String
+  loan        Loan     @relation(fields: [loanId], references: [id])
+}
+
+model SystemSetting {
+  id                String   @id @default(cuid())
+  key               String   @unique
+  value             String
+  description       String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+enum UserRole {
+  CUSTOMER
+  LOAN_OFFICER
+  ADMIN
+}
+
+enum LoanStatus {
+  PROCESSING
+  APPROVED
+  REJECTED
+  ACTIVE
+  PAID
+  DEFAULTED
+}
