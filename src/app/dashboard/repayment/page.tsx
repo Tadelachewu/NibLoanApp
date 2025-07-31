@@ -39,17 +39,17 @@ const otherBanks_am = [
 
 const banksData = {
     en: [
-        { id: 'awash', name: 'Awash Bank', fields: { 'Account Number': '1000123456789', 'Account Name': 'X Bank PLC', 'Branch': 'Finfinne' } },
-        { id: 'nib', name: 'NIB International Bank', fields: { 'Account Number': '7000987654321', 'Account Name': 'X Bank PLC' } },
-        { id: 'abyssinia', name: 'Bank of Abyssinia', fields: { 'Account Number': '1234567890123', 'Account Name': 'X Bank PLC' } },
-        { id: 'cbe', name: 'Commercial Bank of Ethiopia (CBE)', fields: { 'Account Number': '1000098765432', 'Account Name': 'X Bank PLC' } },
+        { id: 'awash', name: 'Awash Bank' },
+        { id: 'nib', name: 'NIB International Bank' },
+        { id: 'abyssinia', name: 'Bank of Abyssinia' },
+        { id: 'cbe', name: 'Commercial Bank of Ethiopia (CBE)' },
         { id: 'other', name: 'Other Banks' },
     ],
     am: [
-        { id: 'awash', name: 'አዋሽ ባንክ', fields: { 'የሂሳብ ቁጥር': '1000123456789', 'የሂሳብ ስም': 'ኤክስ ባንክ አ.ማ.', 'ቅርንጫፍ': 'ፊንፊኔ' } },
-        { id: 'nib', name: 'ኒብ ዓለም አቀፍ ባንክ', fields: { 'የሂሳብ ቁጥር': '7000987654321', 'የሂሳብ ስም': 'ኤክስ ባንክ አ.ማ.' } },
-        { id: 'abyssinia', name: 'አቢሲንያ ባንክ', fields: { 'የሂሳብ ቁጥር': '1234567890123', 'የሂሳብ ስም': 'ኤክስ ባንክ አ.ማ.' } },
-        { id: 'cbe', name: 'የኢትዮጵያ ንግድ ባንክ (CBE)', fields: { 'የሂሳብ ቁጥር': '1000098765432', 'የሂሳብ ስም': 'ኤክስ ባንክ አ.ማ.' } },
+        { id: 'awash', name: 'አዋሽ ባንክ' },
+        { id: 'nib', name: 'ኒብ ዓለም አቀፍ ባንክ' },
+        { id: 'abyssinia', name: 'አቢሲንያ ባንክ' },
+        { id: 'cbe', name: 'የኢትዮጵያ ንግድ ባንክ (CBE)' },
         { id: 'other', name: 'ሌሎች ባንኮች' },
     ]
 };
@@ -71,10 +71,9 @@ export default function RepaymentPage() {
     }
 
     const banks = banksData[locale as keyof typeof banksData];
-    const bankDetails = selectedBank && selectedBank !== 'other' ? banks.find(b => b.id === selectedBank) : null;
     const otherBanks = locale === 'am' ? otherBanks_am : otherBanks_en;
 
-    const otherBankInputFields = {
+    const inputFields = {
         en: {
             accountNumber: "Account Number",
             accountName: "Account Name",
@@ -88,8 +87,31 @@ export default function RepaymentPage() {
             reference: "ማስታወሻ/ማጣቀሻ (አማራጭ)"
         }
     }
-    const currentFields = otherBankInputFields[locale as keyof typeof otherBankInputFields];
+    const currentFields = inputFields[locale as keyof typeof inputFields];
+    
+    const showInputFields = selectedBank && (selectedBank !== 'other' || (selectedBank === 'other' && selectedOtherBank));
 
+    const PaymentInputFields = () => (
+        <Card className="p-4 space-y-4 mt-6">
+             <div className="space-y-2">
+                <Label htmlFor="account-number">{currentFields.accountNumber}</Label>
+                <Input id="account-number" placeholder={t('repayment.transfer.other.accountNumberPlaceholder')} required/>
+            </div>
+            <div className="space-y-2">
+                <Label htmlFor="account-name">{currentFields.accountName}</Label>
+                <Input id="account-name" placeholder={t('repayment.transfer.other.accountNamePlaceholder')} required/>
+            </div>
+             <div className="space-y-2">
+                <Label htmlFor="branch">{currentFields.branch}</Label>
+                <Input id="branch" placeholder={t('repayment.transfer.other.branchPlaceholder')} required/>
+            </div>
+             <div className="space-y-2">
+                <Label htmlFor="reference">{currentFields.reference}</Label>
+                <Input id="reference" placeholder={t('repayment.transfer.other.referencePlaceholder')} />
+            </div>
+            <Button className="w-full">{t('repayment.transfer.proceed')}</Button>
+        </Card>
+    );
 
     return (
         <div className="flex justify-center items-start w-full">
@@ -139,63 +161,26 @@ export default function RepaymentPage() {
                                     ))}
                                 </RadioGroup>
                             </div>
-                            
-                            {bankDetails && (
-                                <div className="mt-6 space-y-4 text-center p-4 border rounded-lg bg-muted/50">
-                                    <Banknote className="mx-auto h-12 w-12 text-muted-foreground" />
-                                    <h3 className="text-lg font-semibold">{bankDetails.name} {t('repayment.transfer.detailsTitle')}</h3>
-                                    <p className="text-muted-foreground text-sm">{t('repayment.transfer.description')}</p>
-                                    <div className="text-left bg-background p-4 rounded-md space-y-2">
-                                        {Object.entries(bankDetails.fields!).map(([key, value]) => (
-                                            <p key={key}><span className="font-semibold">{key}:</span> {value}</p>
-                                        ))}
-                                    </div>
-                                    <p className="text-xs text-muted-foreground pt-2">{t('repayment.transfer.disclaimer')}</p>
-                                </div>
-                            )}
 
                             {selectedBank === 'other' && (
-                                <div className="mt-6 space-y-4">
-                                    <div className="space-y-2">
-                                        <Label htmlFor="other-bank-select">{t('repayment.transfer.selectOtherBank')}</Label>
-                                        <Select onValueChange={handleOtherBankChange}>
-                                            <SelectTrigger id="other-bank-select">
-                                                <SelectValue placeholder={t('repayment.transfer.selectOtherBankPlaceholder')} />
-                                            </SelectTrigger>
-                                            <SelectContent>
-                                                {otherBanks.map(bank => (
-                                                    <SelectItem key={bank.id} value={bank.id}>{bank.name}</SelectItem>
-                                                ))}
-                                            </SelectContent>
-                                        </Select>
-                                    </div>
-
-                                    {selectedOtherBank && (
-                                        <Card className="p-4 space-y-4">
-                                             <div className="space-y-2">
-                                                <Label htmlFor="other-account-number">{currentFields.accountNumber}</Label>
-                                                <Input id="other-account-number" placeholder={t('repayment.transfer.other.accountNumberPlaceholder')} />
-                                            </div>
-                                            <div className="space-y-2">
-                                                <Label htmlFor="other-account-name">{currentFields.accountName}</Label>
-                                                <Input id="other-account-name" placeholder={t('repayment.transfer.other.accountNamePlaceholder')} />
-                                            </div>
-                                             <div className="space-y-2">
-                                                <Label htmlFor="other-branch">{currentFields.branch}</Label>
-                                                <Input id="other-branch" placeholder={t('repayment.transfer.other.branchPlaceholder')} />
-                                            </div>
-                                             <div className="space-y-2">
-                                                <Label htmlFor="other-reference">{currentFields.reference}</Label>
-                                                <Input id="other-reference" placeholder={t('repayment.transfer.other.referencePlaceholder')} />
-                                            </div>
-                                            <Button className="w-full">{t('repayment.transfer.proceed')}</Button>
-                                        </Card>
-                                    )}
+                                <div className="mt-6 space-y-2">
+                                    <Label htmlFor="other-bank-select">{t('repayment.transfer.selectOtherBank')}</Label>
+                                    <Select onValueChange={handleOtherBankChange}>
+                                        <SelectTrigger id="other-bank-select">
+                                            <SelectValue placeholder={t('repayment.transfer.selectOtherBankPlaceholder')} />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            {otherBanks.map(bank => (
+                                                <SelectItem key={bank.id} value={bank.id}>{bank.name}</SelectItem>
+                                            ))}
+                                        </SelectContent>
+                                    </Select>
                                 </div>
                             )}
 
+                            {showInputFields && <PaymentInputFields />}
 
-                             {!selectedBank && (
+                            {!selectedBank && (
                                 <div className="mt-6 text-center text-muted-foreground p-8 border-2 border-dashed rounded-lg">
                                     <p>{t('repayment.transfer.selectBankPrompt')}</p>
                                 </div>
