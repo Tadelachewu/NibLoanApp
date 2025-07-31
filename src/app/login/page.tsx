@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -7,14 +8,34 @@ import { Label } from '@/components/ui/label';
 import { useTranslation } from '@/hooks/use-translation';
 import { Landmark, Fingerprint } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { useToast } from "@/hooks/use-toast";
+
+const testUsers = {
+  'admin@gmail.com': { password: 'admin@123', role: 'admin' },
+  'user@gmail.com': { password: 'user@123', role: 'customer' },
+  'officer@gmail.com': { password: 'officer@123', role: 'loan-officer' },
+}
 
 export default function LoginPage() {
   const router = useRouter();
   const { t } = useTranslation();
+  const { toast } = useToast();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
 
   const handleLogin = () => {
-    // In a real app, you'd have authentication logic here.
-    router.push('/dashboard');
+    const user = testUsers[email as keyof typeof testUsers];
+    if (user && user.password === password) {
+      localStorage.setItem('userRole', user.role);
+      router.push('/dashboard');
+    } else {
+      toast({
+        variant: "destructive",
+        title: "Login Failed",
+        description: "Invalid email or password. Please try again.",
+      })
+    }
   };
 
   return (
@@ -30,11 +51,11 @@ export default function LoginPage() {
         <CardContent className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="email">{t('login.email')}</Label>
-            <Input id="email" type="email" placeholder="you@example.com" />
+            <Input id="email" type="email" placeholder="you@example.com" value={email} onChange={(e) => setEmail(e.target.value)} />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="pin">{t('login.pin')}</Label>
-            <Input id="pin" type="password" placeholder="••••" />
+            <Label htmlFor="pin">Password</Label>
+            <Input id="pin" type="password" placeholder="••••••••" value={password} onChange={(e) => setPassword(e.target.value)} />
           </div>
         </CardContent>
         <CardFooter className="flex flex-col gap-4">

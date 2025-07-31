@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   CreditCard,
   FileText,
@@ -9,7 +9,9 @@ import {
   Landmark,
   LifeBuoy,
   Shield,
+  Users,
 } from "lucide-react";
+import React, { useState, useEffect } from "react";
 
 import { AppHeader } from "@/components/app-header";
 import {
@@ -26,26 +28,40 @@ import {
   SidebarGroupLabel,
 } from "@/components/ui/sidebar";
 import { useTranslation } from "@/hooks/use-translation";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode; }) {
   const { t } = useTranslation();
-  // In a real app, you would get this from your auth context
-  const userRole = "customer"; 
+  const router = useRouter();
+  const [userRole, setUserRole] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const role = localStorage.getItem("userRole");
+    if (role) {
+      setUserRole(role);
+    } else {
+      router.replace("/login");
+    }
+    setIsLoading(false);
+  }, [router]);
 
   const navItems = [
     { href: "/dashboard", icon: Home, label: t('dashboard.nav.dashboard'), roles: ['customer', 'loan-officer', 'admin'] },
     { href: "/dashboard/apply", icon: FileText, label: t('dashboard.nav.apply'), roles: ['customer'] },
     { href: "/dashboard/repayment", icon: CreditCard, label: t('dashboard.nav.repayments'), roles: ['customer'] },
+    { href: "/dashboard/loans", icon: Landmark, label: 'Loan Management', roles: ['loan-officer'] },
     { href: "/dashboard/support", icon: LifeBuoy, label: t('dashboard.nav.support'), roles: ['customer', 'loan-officer', 'admin'] },
   ];
   
   const adminNavItems = [
-    { href: "/dashboard/admin/users", icon: Shield, label: t('dashboard.nav.userManagement'), roles: ['admin'] },
+    { href: "/dashboard/admin/users", icon: Users, label: t('dashboard.nav.userManagement'), roles: ['admin'] },
+    { href: "/dashboard/admin/settings", icon: Shield, label: 'System Settings', roles: ['admin'] },
   ];
 
   function NavItem({ href, icon: Icon, children }: { href: string; icon: React.ElementType; children: React.ReactNode }) {
       const pathname = usePathname();
-      const isActive = pathname.startsWith(href);
+      const isActive = pathname === href;
 
       return (
           <SidebarMenuItem>
@@ -57,6 +73,18 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               </Link>
           </SidebarMenuItem>
       );
+  }
+
+  if (isLoading || !userRole) {
+    return (
+        <div className="flex h-screen w-full items-center justify-center bg-background">
+          <div className="flex flex-col items-center gap-4">
+            <Skeleton className="h-24 w-24 rounded-full" />
+            <Skeleton className="h-8 w-48" />
+            <Skeleton className="h-6 w-64" />
+          </div>
+        </div>
+    );
   }
 
   return (

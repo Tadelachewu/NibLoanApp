@@ -3,7 +3,7 @@
   "login": {
     "welcome": "Welcome back! Please login to your account.",
     "email": "Email Address",
-    "pin": "PIN",
+    "pin": "Password",
     "loginButton": "Login",
     "biometricsButton": "Login with Biometrics"
   },

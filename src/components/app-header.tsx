@@ -9,6 +9,7 @@ import {
   Languages,
   Check
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 import {
   Avatar,
@@ -36,6 +37,12 @@ import { useTranslation } from "@/hooks/use-translation";
 
 export function AppHeader() {
     const { t, setLocale, locale } = useTranslation();
+    const router = useRouter();
+
+    const handleLogout = () => {
+        localStorage.removeItem("userRole");
+        router.push("/login");
+    };
 
   return (
     <header className="flex h-14 items-center gap-4 border-b bg-card px-4 lg:h-[60px] lg:px-6 sticky top-0 z-30">
@@ -107,8 +114,8 @@ export function AppHeader() {
           <DropdownMenuItem><User className="mr-2 h-4 w-4" /> {t('header.userMenu.profile')}</DropdownMenuItem>
           <DropdownMenuItem><Settings className="mr-2 h-4 w-4" /> {t('header.userMenu.settings')}</DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem asChild>
-            <Link href="/login" className="flex items-center w-full"><LogOut className="mr-2 h-4 w-4" /> {t('header.userMenu.logout')}</Link>
+          <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">
+            <LogOut className="mr-2 h-4 w-4" /> {t('header.userMenu.logout')}
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

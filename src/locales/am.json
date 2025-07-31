@@ -3,7 +3,7 @@
   "login": {
     "welcome": "እንኳን ደህና መጡ! እባክዎ ወደ መለያዎ ይግቡ።",
     "email": "የኢሜይል አድራሻ",
-    "pin": "ፒን",
+    "pin": "የይለፍ ቃል",
     "loginButton": "ግባ",
     "biometricsButton": "በባዮሜትሪክስ ይግቡ"
   },
