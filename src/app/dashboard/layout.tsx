@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -65,12 +66,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
       return (
           <SidebarMenuItem>
-              <Link href={href} passHref>
+              <Link href={href}>
                   <SidebarMenuButton asChild isActive={isActive} tooltip={{ children }}>
-                    <a>
+                    <span>
                       <Icon />
                       <span>{children}</span>
-                    </a>
+                    </span>
                   </SidebarMenuButton>
               </Link>
           </SidebarMenuItem>
