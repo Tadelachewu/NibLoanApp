@@ -39,7 +39,11 @@
       "dashboard": "Dashboard",
       "apply": "Apply for Loan",
       "repayments": "Repayments",
-      "support": "Support"
+      "support": "Support",
+      "userManagement": "User Management",
+      "admin": {
+        "title": "Admin"
+      }
     },
     "totalOutstanding": "Total Outstanding",
     "acrossLoans": "Across {count} active loans",
@@ -180,5 +184,38 @@
       "april": "April",
       "may": "May",
       "june": "June"
+  },
+  "userManagement": {
+    "title": "User Management",
+    "description": "View, create, and manage all user accounts in the system.",
+    "addUser": "Add User",
+    "searchPlaceholder": "Search by name or email...",
+    "table": {
+        "name": "Name",
+        "email": "Email",
+        "role": "Role",
+        "lastLogin": "Last Login",
+        "actions": "Actions",
+        "edit": "Edit",
+        "delete": "Delete"
+    },
+    "form": {
+      "addUserTitle": "Add New User",
+      "editUserTitle": "Edit User",
+      "name": "Full Name",
+      "namePlaceholder": "e.g. Jane Doe",
+      "email": "Email Address",
+      "emailPlaceholder": "e.g. jane@example.com",
+      "role": "Role",
+      "selectRole": "Select a role",
+      "roleCustomer": "Customer",
+      "roleLoanOfficer": "Loan Officer",
+      "roleAdmin": "Admin",
+      "cancel": "Cancel",
+      "save": "Save User",
+      "deleteConfirmTitle": "Are you sure?",
+      "deleteConfirmText": "This action cannot be undone. This will permanently delete the user account.",
+      "deleteConfirmButton": "Yes, delete user"
+    }
   }
 }

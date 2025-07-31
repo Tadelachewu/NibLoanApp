@@ -8,6 +8,7 @@ import {
   Home,
   Landmark,
   LifeBuoy,
+  Shield,
 } from "lucide-react";
 
 import { AppHeader } from "@/components/app-header";
@@ -20,22 +21,31 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
   SidebarInset,
+  SidebarSeparator,
+  SidebarGroup,
+  SidebarGroupLabel,
 } from "@/components/ui/sidebar";
 import { useTranslation } from "@/hooks/use-translation";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode; }) {
   const { t } = useTranslation();
+  // In a real app, you would get this from your auth context
+  const userRole = "admin"; 
 
   const navItems = [
-    { href: "/dashboard", icon: Home, label: t('dashboard.nav.dashboard') },
-    { href: "/dashboard/apply", icon: FileText, label: t('dashboard.nav.apply') },
-    { href: "/dashboard/repayment", icon: CreditCard, label: t('dashboard.nav.repayments') },
-    { href: "/dashboard/support", icon: LifeBuoy, label: t('dashboard.nav.support') },
+    { href: "/dashboard", icon: Home, label: t('dashboard.nav.dashboard'), roles: ['customer', 'loan-officer', 'admin'] },
+    { href: "/dashboard/apply", icon: FileText, label: t('dashboard.nav.apply'), roles: ['customer'] },
+    { href: "/dashboard/repayment", icon: CreditCard, label: t('dashboard.nav.repayments'), roles: ['customer'] },
+    { href: "/dashboard/support", icon: LifeBuoy, label: t('dashboard.nav.support'), roles: ['customer', 'loan-officer', 'admin'] },
+  ];
+  
+  const adminNavItems = [
+    { href: "/dashboard/admin/users", icon: Shield, label: t('dashboard.nav.userManagement'), roles: ['admin'] },
   ];
 
   function NavItem({ href, icon: Icon, children }: { href: string; icon: React.ElementType; children: React.ReactNode }) {
       const pathname = usePathname();
-      const isActive = pathname === href;
+      const isActive = pathname.startsWith(href);
 
       return (
           <SidebarMenuItem>
@@ -60,10 +70,25 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </SidebarHeader>
           <SidebarContent>
             <SidebarMenu>
-              {navItems.map((item) => (
+              {navItems.filter(item => item.roles.includes(userRole)).map((item) => (
                 <NavItem key={item.href} href={item.href} icon={item.icon}>{item.label}</NavItem>
               ))}
             </SidebarMenu>
+
+            {userRole === 'admin' && (
+                <>
+                <SidebarSeparator />
+                <SidebarGroup>
+                    <SidebarGroupLabel>{t('dashboard.nav.admin.title')}</SidebarGroupLabel>
+                    <SidebarMenu>
+                        {adminNavItems.map((item) => (
+                            <NavItem key={item.href} href={item.href} icon={item.icon}>{item.label}</NavItem>
+                        ))}
+                    </SidebarMenu>
+                </SidebarGroup>
+                </>
+            )}
+
           </SidebarContent>
         </Sidebar>
         <SidebarInset>

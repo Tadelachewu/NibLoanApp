@@ -39,7 +39,11 @@
       "dashboard": "ዳሽቦርድ",
       "apply": "ለብድር ያመልክቱ",
       "repayments": "ክፍያዎች",
-      "support": "ድጋፍ"
+      "support": "ድጋፍ",
+      "userManagement": "የተጠቃሚ አስተዳደር",
+      "admin": {
+        "title": "አስተዳዳሪ"
+      }
     },
     "totalOutstanding": "ጠቅላላ ያልተከፈለ",
     "acrossLoans": "በ{count} ገቢር ብድሮች ላይ",
@@ -180,5 +184,38 @@
       "april": "ሚያዝያ",
       "may": "ግንቦት",
       "june": "ሰኔ"
+  },
+  "userManagement": {
+    "title": "የተጠቃሚ አስተዳደር",
+    "description": "በስርዓቱ ውስጥ ያሉትን ሁሉንም የተጠቃሚ መለያዎች ይመልከቱ፣ ይፍጠሩ እና ያስተዳድሩ።",
+    "addUser": "ተጠቃሚ አክል",
+    "searchPlaceholder": "በስም ወይም በኢሜይል ይፈልጉ...",
+    "table": {
+      "name": "ስም",
+      "email": "ኢሜይል",
+      "role": "ሚና",
+      "lastLogin": "የመጨረሻ መግቢያ",
+      "actions": "ድርጊቶች",
+      "edit": "አርትዕ",
+      "delete": "ሰርዝ"
+    },
+    "form": {
+      "addUserTitle": "አዲስ ተጠቃሚ አክል",
+      "editUserTitle": "ተጠቃሚን አርትዕ",
+      "name": "ሙሉ ስም",
+      "namePlaceholder": "ለምሳሌ፣ ጄን ዶ",
+      "email": "የኢሜይል አድራሻ",
+      "emailPlaceholder": "ለምሳሌ፣ jane@example.com",
+      "role": "ሚና",
+      "selectRole": "ሚና ይምረጡ",
+      "roleCustomer": "ደንበኛ",
+      "roleLoanOfficer": "የብድር ኦፊሰር",
+      "roleAdmin": "አስተዳዳሪ",
+      "cancel": "ሰርዝ",
+      "save": "ተጠቃሚን አስቀምጥ",
+      "deleteConfirmTitle": "እርግጠኛ ነዎት?",
+      "deleteConfirmText": "ይህ ድርጊት ሊቀለበስ አይችልም። ይህ የተጠቃሚውን መለያ በቋሚነት ይሰርዛል።",
+      "deleteConfirmButton": "አዎ፣ ተጠቃሚን ሰርዝ"
+    }
   }
 }
